@@ -6,6 +6,6 @@ namespace SeleniumStealth.NET.Tests.Unit
     {
         [Fact]
         public void ShouldBeTrue() =>
-            Assert.True(true);
+            Assert.True(condition: true);
     }
 }

@@ -1,0 +1,27 @@
+name: SeleniumStealth.NET Build
+on:
+  push:
+    branches:
+    - master
+    - teste
+  pull_request:
+    branches:
+    - master
+    - teste
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Obtendo código
+      uses: actions/checkout@v2
+    - name: Instalando .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 7.0.203
+        include-prerelease: false
+    - name: Restaurando pacotes .NET
+      run: dotnet restore
+    - name: Compilando solução
+      run: dotnet build --no-restore
+    - name: Rodando testes
+      run: dotnet test --no-build --verbosity normal

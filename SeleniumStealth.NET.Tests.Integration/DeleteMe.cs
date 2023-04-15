@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace SeleniumStealth.NET.Tests.Unit
+namespace SeleniumStealth.NET.Tests.Integration
 {
     public class DeleteMe
     {

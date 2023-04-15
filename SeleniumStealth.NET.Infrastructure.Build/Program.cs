@@ -2,7 +2,6 @@
 using ADotNet.Models.Pipelines.GithubPipelines.DotNets;
 using ADotNet.Models.Pipelines.GithubPipelines.DotNets.Tasks;
 using ADotNet.Models.Pipelines.GithubPipelines.DotNets.Tasks.SetupDotNetTaskV1s;
-using System;
 using System.Collections.Generic;
 
 namespace SeleniumStealth.NET.Infrastructure.Build
@@ -19,12 +18,12 @@ namespace SeleniumStealth.NET.Infrastructure.Build
                 {
                     Push = new PushEvent
                     {
-                        Branches = new string[] { "master", "teste" }
+                        Branches = new string[] { "master" }
                     },
 
                     PullRequest = new PullRequestEvent
                     {
-                        Branches = new string[] { "master", "teste" }
+                        Branches = new string[] { "master" }
                     },
                 },
 
@@ -37,39 +36,38 @@ namespace SeleniumStealth.NET.Infrastructure.Build
                         {
                             new CheckoutTaskV2
                             {
-                                Name = "Obtendo código"
+                                Name = "Pulling Code"
                             },
 
                             new SetupDotNetTaskV1
                             {
-                                Name = "Instalando .NET",
+                                Name = "Installing .NET",
                                 TargetDotNetVersion = new TargetDotNetVersion
                                 {
-                                    /* Obtido em https://dotnet.microsoft.com/en-us/download/dotnet/7.0 */
+                                    /* Got the SDK version at https://dotnet.microsoft.com/en-us/download/dotnet/7.0 */
                                     DotNetVersion = "7.0.203"
                                 }
                             },
 
                             new RestoreTask
                             {
-                                Name = "Restaurando pacotes .NET",
+                                Name = "Resoring .NET Packages",
                             },
 
                             new DotNetBuildTask
                             {
-                                Name = "Compilando solução"
+                                Name = "Compiling Solution"
                             },
 
                             new TestTask
                             {
-                                Name = "Rodando testes"
+                                Name = "Running Tests"
                             }
                         }
                     }
                 }
             };
 
-            /* Serializa e gera o arquivo .yml */
             adoNetClient.SerializeAndWriteToFile(
                 adoPipeline: githubPipeline,
                 path: "../../../../.github/workflows/dotnet.yml");

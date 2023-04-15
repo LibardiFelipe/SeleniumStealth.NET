@@ -18,12 +18,12 @@ namespace SeleniumStealth.NET.Infrastructure.Build
                 {
                     Push = new PushEvent
                     {
-                        Branches = new string[] { "master", "teste" }
+                        Branches = new string[] { "master" }
                     },
 
                     PullRequest = new PullRequestEvent
                     {
-                        Branches = new string[] { "master", "teste" }
+                        Branches = new string[] { "master" }
                     },
                 },
 

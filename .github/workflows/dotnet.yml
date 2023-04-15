@@ -12,16 +12,16 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - name: Obtendo código
+    - name: Pulling Code
       uses: actions/checkout@v2
-    - name: Instalando .NET
+    - name: Installing .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 7.0.203
         include-prerelease: false
-    - name: Restaurando pacotes .NET
+    - name: Resoring .NET Packages
       run: dotnet restore
-    - name: Compilando solução
+    - name: Compiling Solution
       run: dotnet build --no-restore
-    - name: Rodando testes
+    - name: Running Tests
       run: dotnet test --no-build --verbosity normal

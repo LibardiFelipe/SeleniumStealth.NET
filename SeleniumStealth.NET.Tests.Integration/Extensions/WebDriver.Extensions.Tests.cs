@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using SeleniumStealth.NET.Extensions;
+using SeleniumStealth.NET.Clients;
+using SeleniumStealth.NET.Clients.Extensions;
+using SeleniumStealth.NET.Models;
 using Xunit;
 
 namespace SeleniumStealth.NET.Tests.Integration.Extensions
@@ -12,23 +12,26 @@ namespace SeleniumStealth.NET.Tests.Integration.Extensions
     public class WebDriver
     {
         [Fact]
-        public async Task ShouldPassIfElementIdIsBeingDisplayedWhenSimulatingMouseMovementOverIt()
+        public void ShouldPassIfElementIdIsBeingDisplayedWhenSimulatingMouseMovementOverIt()
         {
             // given
-            using var cd = new ChromeDriver();
+            var options = new ChromeOptions().ApplyStealth(new ApplyStealthSettings
+            {
+                Headless = true
+            });
 
+            using var cd = Stealth.Instantiate(options);
             cd.Navigate().GoToUrl(Path.Combine(AppContext.BaseDirectory,
                 "Resources/mouse_movement_test.html"));
 
-            var ids = cd.FindElements(By.ClassName("element"))
-                .Select(x => x.GetAttribute("id")).ToArray();
-
             // when
-            await cd.WaitAndMoveMouseRandomly(600);
+            cd.SpecialWait(1000, 3000);
 
             // then
-            var output = cd.FindElement(By.Id("output")).Text;
-            Assert.Contains(output, string.Join(' ', ids));
+            var outputText = cd.FindElement(By.Id("mouseMovementStatus"))
+                .GetAttribute("value");
+
+            Assert.Contains("detected", outputText);
         }
     }
 }

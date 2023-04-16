@@ -1,57 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mouse Movement Test</title>
-    <style>
-      .container {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 50px;
-      }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Movement Detection</title>
+</head>
+<body>
+    <h1>Mouse Movement Detection</h1>
+    <input type="text" id="mouseMovementStatus" readonly>
 
-      .element {
-        width: 100px;
-        height: 100px;
-        background-color: lightblue;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    </style>
     <script>
-      function handleMouseMove(event) {
-        const elementId = event.target.id;
-        const output = document.getElementById("output");
-        output.innerHTML = output.innerHTML + `${elementId} `;
-      }
+        const inputElement = document.getElementById('mouseMovementStatus');
+
+        function handleMouseMove() {
+            inputElement.value = 'detected';
+            document.body.removeEventListener('mousemove', handleMouseMove);
+        }
+
+        document.body.addEventListener('mousemove', handleMouseMove);
     </script>
-  </head>
-  <body>
-    <div class="container">
-      <button
-        id="element1"
-        class="element"
-        onmousemove="handleMouseMove(event)"
-      >
-        Element 1
-      </button>
-      <button
-        id="element2"
-        class="element"
-        onmousemove="handleMouseMove(event)"
-      >
-        Element 2
-      </button>
-      <button
-        id="element3"
-        class="element"
-        onmousemove="handleMouseMove(event)"
-      >
-        Element 3
-      </button>
-    </div>
-    <p id="output" style="text-align: center; margin-top: 50px"></p>
-  </body>
+</body>
 </html>

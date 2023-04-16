@@ -1,22 +1,22 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using SeleniumStealth.NET.Extensions;
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using SeleniumStealth.NET.Extensions;
 using Xunit;
 
 namespace SeleniumStealth.NET.Tests.Integration.Extensions
 {
-    public class Extensions
+    public class WebDriver
     {
         [Fact]
         public async Task ShouldPassIfElementIdIsBeingDisplayedWhenSimulatingMouseMovementOverIt()
         {
             // given
             using var cd = new ChromeDriver();
-            
+
             cd.Navigate().GoToUrl(Path.Combine(AppContext.BaseDirectory,
                 "Resources/mouse_movement_test.html"));
 

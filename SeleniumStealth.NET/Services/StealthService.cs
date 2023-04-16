@@ -14,10 +14,11 @@ namespace SeleniumStealth.NET.Services
             StealthInstanceSettings? instanceSettings)
         {
             instanceSettings ??= new StealthInstanceSettings();
+            chromeOptions ??= new ChromeOptions();
 
             var driver = string.IsNullOrWhiteSpace(instanceSettings?.ChromeDriverPath)
-                ? new ChromeDriver(chromeOptions ?? new ChromeOptions())
-                : new ChromeDriver(instanceSettings.ChromeDriverPath, chromeOptions ?? new ChromeOptions());
+                ? new ChromeDriver(chromeOptions)
+                : new ChromeDriver(instanceSettings.ChromeDriverPath, chromeOptions);
 
             switch (instanceSettings!.Mode)
             {

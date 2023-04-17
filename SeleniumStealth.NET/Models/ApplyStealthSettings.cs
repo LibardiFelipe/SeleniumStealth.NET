@@ -2,16 +2,15 @@
 {
     public class ApplyStealthSettings
     {
-        public bool Headless { get; set; } = false;
-        public bool AutomationControlled { get; set; } = true;
-        public bool SandBox { get; set; } = true;
-        public bool InfoBars { get; set; } = true;
-        public bool DevShmUsage { get; set; } = true;
-        public bool Gpu { get; set; } = true;
-        public bool Extensions { get; set; } = true;
-        public bool WebSecurity { get; set; } = true;
-        public bool BrowserSideNavigation { get; set; } = true;
-        public bool VizDisplayCompositor { get; set; } = true;
-        public bool RendererBackgrounding { get; set; } = true;
+        public bool DisableAutomationControlled { get; set; } = true;
+        public bool NoSandBox { get; set; } = true;
+        public bool DisableInfoBars { get; set; } = true;
+        public bool DisableDevShmUsage { get; set; } = true;
+        public bool DisableGpu { get; set; } = true;
+        public bool DisableExtensions { get; set; } = true;
+        public bool DisableWebSecurity { get; set; } = true;
+        public bool DisableBrowserSideNavigation { get; set; } = true;
+        public bool DisableVizDisplayCompositor { get; set; } = true;
+        public bool DisableRendererBackgrounding { get; set; } = true;
     }
 }

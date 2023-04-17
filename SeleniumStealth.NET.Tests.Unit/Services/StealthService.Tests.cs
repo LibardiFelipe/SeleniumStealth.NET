@@ -31,5 +31,30 @@ namespace SeleniumStealth.NET.Tests.Unit.Services
             // then
             Assert.False(cdcPresence);
         }
+
+        [Fact]
+        public void ShouldPassIfDisableAutomationControlledIsHidingWebDriver()
+        {
+            // given
+            var options = new ChromeOptions()
+                .ApplyStealth(headless: true,
+                    settings: new ApplyStealthSettings
+                    {
+                        DisableAutomationControlled = true
+                    });
+
+            using var cd = Stealth.Instantiate(options, new StealthInstanceSettings
+            {
+                HideWebDriver = false
+            });
+
+            cd.Navigate().GoToUrl("about:blank");
+
+            // when
+            var webdriverEnabled = Convert.ToBoolean(((IJavaScriptExecutor)cd).ExecuteScript("return navigator.webdriver;"));
+
+            // then
+            Assert.False(webdriverEnabled);
+        }
     }
 }

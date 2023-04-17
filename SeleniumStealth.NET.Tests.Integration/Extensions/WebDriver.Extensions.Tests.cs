@@ -15,10 +15,8 @@ namespace SeleniumStealth.NET.Tests.Integration.Extensions
         public void ShouldPassIfElementIdIsBeingDisplayedWhenSimulatingMouseMovementOverIt()
         {
             // given
-            var options = new ChromeOptions().ApplyStealth(new ApplyStealthSettings
-            {
-                Headless = true
-            });
+            var options = new ChromeOptions()
+                .ApplyStealth(headless: true);
 
             using var cd = Stealth.Instantiate(options);
             cd.Navigate().GoToUrl(Path.Combine(AppContext.BaseDirectory,

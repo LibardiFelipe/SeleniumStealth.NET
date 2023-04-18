@@ -272,6 +272,13 @@
     }
 }</value>
   </data>
+  <data name="NavigatorVendor" xml:space="preserve">
+    <value>(vendor) =&gt; {
+  Object.defineProperty(Object.getPrototypeOf(navigator), 'vendor', {
+    get: () =&gt; vendor || 'Google Inc.'
+  })
+}</value>
+  </data>
   <data name="RemoveCdcVariables" xml:space="preserve">
     <value>() =&gt; {
     console.log('Remove CDC variables injected!')

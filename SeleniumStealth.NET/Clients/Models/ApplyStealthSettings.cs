@@ -1,4 +1,4 @@
-﻿namespace SeleniumStealth.NET.Models
+﻿namespace SeleniumStealth.NET.Clients.Models
 {
     public class ApplyStealthSettings
     {

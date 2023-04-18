@@ -2,6 +2,7 @@
 using System.Linq;
 using OpenQA.Selenium.Chrome;
 using SeleniumStealth.NET.Clients.Enums;
+using SeleniumStealth.NET.Clients.Models;
 using SeleniumStealth.NET.Models;
 using SeleniumStealth.NET.Resources;
 
@@ -60,6 +61,13 @@ namespace SeleniumStealth.NET.Services
 
             /* Required */
             EvaluateOnNewDocument(driver, JsFunctions.FakeMouseMovement);
+
+            if (instanceSettings.RandomUserAgent)
+            {
+                var navInfo = new NavigatorInfo();
+                driver.ExecuteCdpCommand("Network.setUserAgentOverride", new Dictionary<string, object> { { "userAgent", navInfo.UserAgent } });
+                EvaluateOnNewDocument(driver, JsFunctions.NavigatorVendor, navInfo.Vendor);
+            }
 
             if (instanceSettings.RemoveCDCVariables)
                 EvaluateOnNewDocument(driver, JsFunctions.RemoveCdcVariables);

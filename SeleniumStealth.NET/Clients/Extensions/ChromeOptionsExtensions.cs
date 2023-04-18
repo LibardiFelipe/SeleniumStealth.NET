@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium.Chrome;
-using SeleniumStealth.NET.Models;
+using SeleniumStealth.NET.Clients.Models;
 
 namespace SeleniumStealth.NET.Clients.Extensions
 {

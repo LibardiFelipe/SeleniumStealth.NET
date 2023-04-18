@@ -4,7 +4,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SeleniumStealth.NET.Clients;
 using SeleniumStealth.NET.Clients.Extensions;
-using SeleniumStealth.NET.Models;
 using Xunit;
 
 namespace SeleniumStealth.NET.Tests.Integration.Extensions

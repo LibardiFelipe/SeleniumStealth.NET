@@ -1439,4 +1439,29 @@
     }
 }</value>
   </data>
+  <data name="WebGlVendor" xml:space="preserve">
+    <value>(vendor, renderer) =&gt; {
+  const getParameterProxyHandler = {
+    apply: function (target, ctx, args) {
+        const param = (args || [])[0]
+
+        if (param === 37445) {
+            return vendor || 'Intel Inc.'
+        }
+
+        if (param === 37446) {
+            return renderer || 'Intel Iris OpenGL Engine'
+        }
+        return utils.cache.Reflect.apply(target, ctx, args)
+    }
+  }
+
+  const addProxy = (obj, propName) =&gt; {
+      utils.replaceWithProxy(obj, propName, getParameterProxyHandler)
+  }
+
+  addProxy(WebGLRenderingContext.prototype, 'getParameter')
+  addProxy(WebGL2RenderingContext.prototype, 'getParameter')  
+}</value>
+  </data>
 </root>

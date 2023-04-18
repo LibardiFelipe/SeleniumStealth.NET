@@ -410,5 +410,31 @@ namespace SeleniumStealth.NET.Resources {
                 return ResourceManager.GetString("UndetectedChromeDriver", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a (vendor, renderer) =&gt; {
+        ///  const getParameterProxyHandler = {
+        ///    apply: function (target, ctx, args) {
+        ///        const param = (args || [])[0]
+        ///
+        ///        if (param === 37445) {
+        ///            return vendor || &apos;Intel Inc.&apos;
+        ///        }
+        ///
+        ///        if (param === 37446) {
+        ///            return renderer || &apos;Intel Iris OpenGL Engine&apos;
+        ///        }
+        ///        return utils.cache.Reflect.apply(target, ctx, args)
+        ///    }
+        ///  }
+        ///
+        ///  const addProxy = (obj, propName) =&gt; {
+        ///      utils.replaceWithProxy(obj, propName, getParameterPro [o restante da cadeia de caracteres foi truncado]&quot;;.
+        /// </summary>
+        internal static string WebGlVendor {
+            get {
+                return ResourceManager.GetString("WebGlVendor", resourceCulture);
+            }
+        }
     }
 }

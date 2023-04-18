@@ -4,7 +4,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SeleniumStealth.NET.Clients;
 using SeleniumStealth.NET.Clients.Extensions;
-using SeleniumStealth.NET.Models;
 using Xunit;
 
 namespace SeleniumStealth.NET.Tests.Integration.Extensions
@@ -15,10 +14,8 @@ namespace SeleniumStealth.NET.Tests.Integration.Extensions
         public void ShouldPassIfElementIdIsBeingDisplayedWhenSimulatingMouseMovementOverIt()
         {
             // given
-            var options = new ChromeOptions().ApplyStealth(new ApplyStealthSettings
-            {
-                Headless = true
-            });
+            var options = new ChromeOptions()
+                .ApplyStealth(headless: true);
 
             using var cd = Stealth.Instantiate(options);
             cd.Navigate().GoToUrl(Path.Combine(AppContext.BaseDirectory,

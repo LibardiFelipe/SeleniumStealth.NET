@@ -3,11 +3,9 @@ on:
   push:
     branches:
     - master
-    - teste
   pull_request:
     branches:
     - master
-    - teste
 jobs:
   build:
     runs-on: windows-latest

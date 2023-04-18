@@ -141,6 +141,19 @@ namespace SeleniumStealth.NET.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a (vendor) =&gt; {
+        ///  Object.defineProperty(Object.getPrototypeOf(navigator), &apos;vendor&apos;, {
+        ///    get: () =&gt; vendor || &apos;Google Inc.&apos;
+        ///  })
+        ///}.
+        /// </summary>
+        internal static string NavigatorVendor {
+            get {
+                return ResourceManager.GetString("NavigatorVendor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a () =&gt; {
         ///    console.log(&apos;Remove CDC variables injected!&apos;)
         ///

@@ -1,6 +1,6 @@
 ﻿using SeleniumStealth.NET.Clients.Enums;
 
-namespace SeleniumStealth.NET.Models
+namespace SeleniumStealth.NET.Clients.Models
 {
     public class StealthInstanceSettings
     {
@@ -16,6 +16,7 @@ namespace SeleniumStealth.NET.Models
         public bool RemoveCDCVariables { get; set; } = true;
         public bool FixHairline { get; set; } = true;
         public bool FakeLoadingTimes { get; set; } = true;
+        public bool RandomUserAgent { get; set; } = true;
     }
 
     public class ChromeRuntime

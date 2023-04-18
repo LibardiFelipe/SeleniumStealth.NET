@@ -81,5 +81,33 @@ namespace SeleniumStealth.NET.Tests.Unit.Services
             // then
             Assert.False(webdriverEnabled);
         }
+
+        [Fact]
+        public void ShouldPassIfRandomUserAgentIsChangingUserAgentEveryInstance()
+        {
+            // given
+            var options = new ChromeOptions()
+                .ApplyStealth(headless: true);
+
+            using var cd1 = Stealth.Instantiate(options, new StealthInstanceSettings
+            {
+                RandomUserAgent = true
+            });
+
+            using var cd2 = Stealth.Instantiate(options, new StealthInstanceSettings
+            {
+                RandomUserAgent = true
+            });
+
+            cd1.Navigate().GoToUrl("about:blank");
+            cd2.Navigate().GoToUrl("about:blank");
+
+            // when
+            var userAgent1 = ((IJavaScriptExecutor)cd1).ExecuteScript("return navigator.userAgent;").ToString();
+            var userAgent2 = ((IJavaScriptExecutor)cd2).ExecuteScript("return navigator.userAgent;").ToString();
+ 
+            // then
+            Assert.NotEqual(userAgent1, userAgent2);
+        }
     }
 }

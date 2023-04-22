@@ -1325,6 +1325,13 @@
     utils.preloadCache()
 }</value>
   </data>
+  <data name="SetDeviceMemory" xml:space="preserve">
+    <value>(memory) =&gt; {
+  Object.defineProperty(navigator, 'deviceMemory', {
+    get: () =&gt; memory
+  });
+}</value>
+  </data>
   <data name="UndetectedChromeDriver" xml:space="preserve">
     <value>() =&gt; {
     console.log('UndetectedChromedriver injected!')
@@ -1437,6 +1444,31 @@
     } catch (e) {
         console.error('UndetectedChromedriver: ' + e)
     }
+}</value>
+  </data>
+  <data name="WebGlVendor" xml:space="preserve">
+    <value>(webglvendor, webglrenderer) =&gt; {
+  const getParameterProxyHandler = {
+    apply: function (target, ctx, args) {
+        const param = (args || [])[0]
+
+        if (param === 37445) {
+            return webglvendor
+        }
+
+        if (param === 37446) {
+            return webglrenderer
+        }
+        return utils.cache.Reflect.apply(target, ctx, args)
+    }
+  }
+
+  const addProxy = (obj, propName) =&gt; {
+      utils.replaceWithProxy(obj, propName, getParameterProxyHandler)
+  }
+
+  addProxy(WebGLRenderingContext.prototype, 'getParameter')
+  addProxy(WebGL2RenderingContext.prototype, 'getParameter')  
 }</value>
   </data>
 </root>

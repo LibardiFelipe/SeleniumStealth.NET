@@ -22,7 +22,15 @@ namespace SeleniumStealth.NET.Clients.Extensions
                     var interval = intervalInMilliseconds / 5;
                     for (int i = 0; i < 5; i++)
                     {
-                        ((IJavaScriptExecutor)driver).ExecuteScript("simulateRandomMouseMove(arguments[0])", interval);
+                        try
+                        {
+                            ((IJavaScriptExecutor)driver).ExecuteScript("simulateRandomMouseMove(arguments[0])", interval);
+                        }
+                        catch (JavaScriptException ex) when (ex.Message.Contains("is not defined"))
+                        {
+                            throw new Exception($"{nameof(SpecialWait)} cannot be used without {nameof(Stealth.Instantiate)}().");
+                        }
+
                         Task.Delay(interval).Wait();
                     }
 
@@ -53,7 +61,15 @@ namespace SeleniumStealth.NET.Clients.Extensions
                     var interval = intervalInMilliseconds / 5;
                     for (int i = 0; i < 5; i++)
                     {
-                        ((IJavaScriptExecutor)driver).ExecuteScript("simulateRandomMouseMove(arguments[0])", interval);
+                        try
+                        {
+                            ((IJavaScriptExecutor)driver).ExecuteScript("simulateRandomMouseMove(arguments[0])", interval);
+                        }
+                        catch (JavaScriptException ex) when (ex.Message.Contains("is not defined"))
+                        {
+                            throw new Exception($"{nameof(SpecialWait)} cannot be used without {nameof(Stealth.Instantiate)}().");
+                        }
+
                         Task.Delay(interval).Wait();
                     }
 

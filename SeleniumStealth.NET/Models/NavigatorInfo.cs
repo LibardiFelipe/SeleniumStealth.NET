@@ -10,6 +10,7 @@ namespace SeleniumStealth.NET.Models
         {
             Vendor = GetRandomNavigatorVendor();
             UserAgent = GetUserAgent(Vendor);
+            MemorySize = GetRandomMemorySize();
             (WebGLVendor, WebGLRenderer) = GetWebGlInfo(Vendor);
         }
 
@@ -17,6 +18,13 @@ namespace SeleniumStealth.NET.Models
         public string UserAgent { get; set; }
         public string WebGLVendor { get; set; }
         public string WebGLRenderer { get; set; }
+        public int MemorySize { get; set; }
+        
+        private static int GetRandomMemorySize()
+        {
+            int[] sizes = { 4, 8, 16, 32 };
+            return sizes[_rnd.Next(sizes.Length)];
+        }
 
         private static string GetRandomNavigatorVendor()
         {
@@ -38,9 +46,9 @@ namespace SeleniumStealth.NET.Models
             };
         }
 
-        private static (string, string) GetWebGlInfo(string webGLVendor)
+        private static (string, string) GetWebGlInfo(string navVendor)
         {
-            string webGLRenderer = webGLVendor switch
+            string webGLRenderer = navVendor switch
             {
                 "Google Inc." => $"ANGLE (Intel(R) HD Graphics {_rnd.Next(600, 700)} Direct3D11 vs_5_0 ps_5_0)",
                 "Microsoft Corporation" => "Microsoft Basic Render Driver",
@@ -49,7 +57,7 @@ namespace SeleniumStealth.NET.Models
                 _ => $"ANGLE (AMD Radeon R{_rnd.Next(5, 9)} {_rnd.Next(300, 400)} Direct3D11 vs_5_0 ps_5_0)"
             };
 
-            return (webGLVendor, webGLRenderer);
+            return (navVendor.Replace("Google Inc.", "Intel Inc."), webGLRenderer);
         }
     }
 }

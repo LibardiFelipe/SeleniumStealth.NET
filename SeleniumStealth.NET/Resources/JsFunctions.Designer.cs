@@ -391,6 +391,19 @@ namespace SeleniumStealth.NET.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a (memory) =&gt; {
+        ///  Object.defineProperty(navigator, &apos;deviceMemory&apos;, {
+        ///    get: () =&gt; memory
+        ///  });
+        ///}.
+        /// </summary>
+        internal static string SetDeviceMemory {
+            get {
+                return ResourceManager.GetString("SetDeviceMemory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a () =&gt; {
         ///    console.log(&apos;UndetectedChromedriver injected!&apos;)
         ///
@@ -408,6 +421,35 @@ namespace SeleniumStealth.NET.Resources {
         internal static string UndetectedChromeDriver {
             get {
                 return ResourceManager.GetString("UndetectedChromeDriver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a (webglvendor, webglrenderer) =&gt; {
+        ///  const getParameterProxyHandler = {
+        ///    apply: function (target, ctx, args) {
+        ///        const param = (args || [])[0]
+        ///
+        ///        if (param === 37445) {
+        ///            return webglvendor
+        ///        }
+        ///
+        ///        if (param === 37446) {
+        ///            return webglrenderer
+        ///        }
+        ///        return utils.cache.Reflect.apply(target, ctx, args)
+        ///    }
+        ///  }
+        ///
+        ///  const addProxy = (obj, propName) =&gt; {
+        ///      utils.replaceWithProxy(obj, propName, getParameterProxyHandler)
+        ///  }
+        ///
+        ///  addPr [o restante da cadeia de caracteres foi truncado]&quot;;.
+        /// </summary>
+        internal static string WebGlVendor {
+            get {
+                return ResourceManager.GetString("WebGlVendor", resourceCulture);
             }
         }
     }

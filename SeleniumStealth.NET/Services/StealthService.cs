@@ -68,6 +68,7 @@ namespace SeleniumStealth.NET.Services
                 driver.ExecuteCdpCommand("Network.setUserAgentOverride", new Dictionary<string, object> { { "userAgent", navInfo.UserAgent } });
                 EvaluateOnNewDocument(driver, JsFunctions.WebGlVendor, navInfo.WebGLVendor, navInfo.WebGLRenderer);
                 EvaluateOnNewDocument(driver, JsFunctions.NavigatorVendor, navInfo.Vendor);
+                EvaluateOnNewDocument(driver, JsFunctions.SetDeviceMemory, navInfo.MemorySize);
             }
 
             if (instanceSettings.RemoveCDCVariables)

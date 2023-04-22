@@ -1325,6 +1325,13 @@
     utils.preloadCache()
 }</value>
   </data>
+  <data name="SetDeviceMemory" xml:space="preserve">
+    <value>(memory) =&gt; {
+  Object.defineProperty(navigator, 'deviceMemory', {
+    get: () =&gt; memory
+  });
+}</value>
+  </data>
   <data name="UndetectedChromeDriver" xml:space="preserve">
     <value>() =&gt; {
     console.log('UndetectedChromedriver injected!')
@@ -1440,17 +1447,17 @@
 }</value>
   </data>
   <data name="WebGlVendor" xml:space="preserve">
-    <value>(vendor, renderer) =&gt; {
+    <value>(webglvendor, webglrenderer) =&gt; {
   const getParameterProxyHandler = {
     apply: function (target, ctx, args) {
         const param = (args || [])[0]
 
         if (param === 37445) {
-            return vendor || 'Intel Inc.'
+            return webglvendor
         }
 
         if (param === 37446) {
-            return renderer || 'Intel Iris OpenGL Engine'
+            return webglrenderer
         }
         return utils.cache.Reflect.apply(target, ctx, args)
     }

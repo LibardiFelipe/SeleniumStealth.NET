@@ -391,6 +391,19 @@ namespace SeleniumStealth.NET.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a (memory) =&gt; {
+        ///  Object.defineProperty(navigator, &apos;deviceMemory&apos;, {
+        ///    get: () =&gt; memory
+        ///  });
+        ///}.
+        /// </summary>
+        internal static string SetDeviceMemory {
+            get {
+                return ResourceManager.GetString("SetDeviceMemory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a () =&gt; {
         ///    console.log(&apos;UndetectedChromedriver injected!&apos;)
         ///
@@ -412,24 +425,27 @@ namespace SeleniumStealth.NET.Resources {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a (vendor, renderer) =&gt; {
+        ///   Consulta uma cadeia de caracteres localizada semelhante a (webglvendor, webglrenderer) =&gt; {
         ///  const getParameterProxyHandler = {
         ///    apply: function (target, ctx, args) {
         ///        const param = (args || [])[0]
         ///
         ///        if (param === 37445) {
-        ///            return vendor || &apos;Intel Inc.&apos;
+        ///            return webglvendor
         ///        }
         ///
         ///        if (param === 37446) {
-        ///            return renderer || &apos;Intel Iris OpenGL Engine&apos;
+        ///            return webglrenderer
         ///        }
         ///        return utils.cache.Reflect.apply(target, ctx, args)
         ///    }
         ///  }
         ///
         ///  const addProxy = (obj, propName) =&gt; {
-        ///      utils.replaceWithProxy(obj, propName, getParameterPro [o restante da cadeia de caracteres foi truncado]&quot;;.
+        ///      utils.replaceWithProxy(obj, propName, getParameterProxyHandler)
+        ///  }
+        ///
+        ///  addPr [o restante da cadeia de caracteres foi truncado]&quot;;.
         /// </summary>
         internal static string WebGlVendor {
             get {

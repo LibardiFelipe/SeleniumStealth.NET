@@ -1,6 +1,6 @@
 # SeleniumStealth .NET
 
-This is the C# version of the **SeleniumStealth** python library with a few personal tweaks.
+This is the .NET version of the **SeleniumStealth** python library with a few personal tweaks.
 It basicly injects some javascript code before the page loads up, hiding **almost every trace** of automation that could be found.
 
 

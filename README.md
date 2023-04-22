@@ -7,8 +7,11 @@ It basicly injects some javascript code before the page loads up, hiding **almos
 # How to use
 
 ````
+using OpenQA.Selenium.Chrome;
 using SeleniumStealth.NET.Clients;
+using SeleniumStealth.NET.Clients.Enums;
 using SeleniumStealth.NET.Clients.Extensions;
+using SeleniumStealth.NET.Clients.Models;
 
 static void Main(string[] args)
         {

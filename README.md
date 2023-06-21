@@ -1,7 +1,7 @@
 # SeleniumStealth .NET
 
 This is the .NET version of the **SeleniumStealth** python library with a few personal tweaks.
-It basicly injects some javascript code before the page loads up, hiding **almost every trace** of automation that could be found.
+It basically injects some javascript code before the page loads up, hiding **almost every trace** of automation that could be found.
 
 
 # How to use
@@ -66,7 +66,7 @@ static void Main(string[] args)
 
         /* Plus:
         /* It simulate mouse cursor movement on the body of the document
-        * while waiting. Useful to bypass hCaptcha cursor movement tracking bullshit. */
+        * while waiting. Useful to bypass hCaptcha cursor movement tracking. */
         chromeDriver.SpecialWait(3000);
 }
 ````
